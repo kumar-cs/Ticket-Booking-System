@@ -42,4 +42,30 @@ public class TheaterSearchService implements ITheaterSerachService {
 
         return theaterDetailsDTOS;
     }
+
+
+
+    @Transactional(readOnly = true)
+    public List<TheaterDetailsDTO> findAll() {
+
+        List<TheaterDetails> theaterDetailsList = new ArrayList<TheaterDetails>(theaterSearchRepository.findAll());
+
+
+        List<TheaterDetailsDTO> theaterDetailsDTOS = new ArrayList<TheaterDetailsDTO>();
+        TheaterDetailsDTO theaterDetailsDTO = new TheaterDetailsDTO();
+
+        theaterDetailsList.forEach(
+                theaterDetails ->
+                {
+                    theaterDetailsDTO.setTheaterName(theaterDetails.getTheaterName());
+                    theaterDetailsDTO.setMovieName(theaterDetails.getMovieName());
+                    theaterDetailsDTO.setShowTime(Arrays.asList(theaterDetails.getShowTime().split(",")));
+                    theaterDetailsDTOS.add(theaterDetailsDTO);
+                }
+
+        );
+
+
+        return theaterDetailsDTOS;
+    }
 }

@@ -3,6 +3,7 @@ package org.ticketing.entity;
 
 import jakarta.persistence.*;
 
+
 import java.io.Serializable;
 
 
@@ -26,6 +27,9 @@ public class TheaterDetails  implements Serializable {
     @Column(name = "showTime")
     private String showTime;
 
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getTheaterName() {
         return theaterName;
@@ -65,7 +69,8 @@ public class TheaterDetails  implements Serializable {
     public long getId() {
         return id;
     }
-    public TheaterDetails(String theaterName, String movieName, String showDate, String showTime) {
+    public TheaterDetails(long Id, String theaterName, String movieName, String showDate, String showTime) {
+        this.id=Id;
         this.theaterName = theaterName;
         this.movieName = movieName;
         this.showDate = showDate;
