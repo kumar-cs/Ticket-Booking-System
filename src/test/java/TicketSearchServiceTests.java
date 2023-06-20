@@ -48,11 +48,11 @@ public class TicketSearchServiceTests {
         given(iTheaterSearchRepository.findAll()).willReturn(List.of(theaterDetails,theaterDetails1));
 
         // when -  action or the behaviour that we are going test
-        List<TheaterDetailsDTO> employeeList = theaterSearchService.findAll();
+        List<TheaterDetailsDTO> theaterList = theaterSearchService.findAll();
 
         // then - verify the output
-        assertThat(employeeList).isNotNull();
-        assertThat(employeeList.size()).isEqualTo(2);
+        assertThat(theaterList).isNotNull();
+        assertThat(theaterList.size()).isEqualTo(2);
     }
 
 
@@ -61,7 +61,7 @@ public class TicketSearchServiceTests {
     public void givenTheaterList_whenGetAllTheaters_thenReturnEmptyListTheatersList(){
         // given - precondition or setup
 
-   /*     TheaterDetails employee1 = new TheaterDetails(2L,"Rakesh","Annamalai","11:30,12:30","17-06-2023");*/
+   /*     TheaterDetails theater1 = new TheaterDetails(2L,"Rakesh","Annamalai","11:30,12:30","17-06-2023");*/
 
         given(iTheaterSearchRepository.findAll()).willReturn(Collections.emptyList());
 
